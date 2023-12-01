@@ -21,7 +21,7 @@ type Emitter interface {
 	OnError(test spec.TestKind, err error) error
 
 	// OnConnected is emitted when we connected to the ndt7 server.
-	OnConnected(test spec.TestKind, fqdn string) error
+	OnConnected(test spec.TestKind, fqdn string, location spec.Location) error
 
 	// OnDownloadEvent is emitted during the download.
 	OnDownloadEvent(m *spec.Measurement) error

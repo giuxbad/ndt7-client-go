@@ -3,8 +3,8 @@ package emitter
 import (
 	"time"
 
-	"github.com/prometheus/client_golang/prometheus"
 	"github.com/m-lab/ndt7-client-go/spec"
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 // Prometheus tees summary metrics as prometheus metrics.
@@ -52,8 +52,8 @@ func (p Prometheus) OnError(test spec.TestKind, err error) error {
 }
 
 // OnConnected emits the connected event
-func (p Prometheus) OnConnected(test spec.TestKind, fqdn string) error {
-	return p.emitter.OnConnected(test, fqdn)
+func (p Prometheus) OnConnected(test spec.TestKind, fqdn string, loc spec.Location) error {
+	return p.emitter.OnConnected(test, fqdn, loc)
 }
 
 // OnDownloadEvent handles an event emitted during the download

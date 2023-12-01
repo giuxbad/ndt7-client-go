@@ -30,7 +30,7 @@ func (q Quiet) OnError(test spec.TestKind, err error) error {
 }
 
 // OnConnected emits the connected event
-func (q Quiet) OnConnected(test spec.TestKind, fqdn string) error {
+func (q Quiet) OnConnected(test spec.TestKind, fqdn string, loc spec.Location) error {
 	return nil
 }
 

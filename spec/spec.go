@@ -24,6 +24,12 @@ type (
 
 	// TCPInfo contains a TCP_INFO measurement.
 	TCPInfo model.TCPInfo
+
+	// Location contains metadata about the geographic location of a target machine.
+	Location struct {
+		City    string `json:"City,omitempty"`
+		Country string `json:"Country,omitempty"`
+	}
 )
 
 const (
@@ -60,4 +66,7 @@ type Measurement struct {
 
 	// TCPInfo contains metrics measured using TCP_INFO instrumentation.
 	TCPInfo *TCPInfo `json:",omitempty"`
+
+	// Location contains metadata about the geographic location of a target machine.
+	Location *Location `json:",omitempty"`
 }

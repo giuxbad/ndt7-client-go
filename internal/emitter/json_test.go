@@ -89,7 +89,8 @@ func TestJSONOnErrorFailure(t *testing.T) {
 func TestJSONOnConnected(t *testing.T) {
 	sw := &mocks.SavingWriter{}
 	j := NewJSON(sw)
-	err := j.OnConnected("download", "FQDN")
+	l := spec.Location{City: "City", Country: "Country"}
+	err := j.OnConnected("download", "FQDN", l)
 	if err != nil {
 		t.Fatal(err)
 	}

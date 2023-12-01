@@ -91,6 +91,10 @@ type Client struct {
 	// by Client at runtime. (read-only)
 	FQDN string
 
+	// Location contains metadata about the geographic location of a target machine.
+	// by Client at runtime. (read-only)
+	Location spec.Location
+
 	// Server is an optional server name. Client will use this target server if
 	// not empty. Takes precedence over ServiceURL and Locate API.
 	Server string
@@ -193,6 +197,8 @@ func (c *Client) nextURLFromLocate(ctx context.Context, p string) (string, error
 	k := c.Scheme + "://" + p
 	if c.tIndex[k] < len(c.targets) {
 		r := c.targets[c.tIndex[k]].URLs[k]
+		c.Location.City = c.targets[c.tIndex[k]].Location.City
+		c.Location.Country = c.targets[c.tIndex[k]].Location.Country
 		c.tIndex[k]++
 		return r, nil
 	}

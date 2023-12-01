@@ -70,12 +70,13 @@ func (j jsonEmitter) OnError(test spec.TestKind, err error) error {
 }
 
 // OnConnected emits the connected event
-func (j jsonEmitter) OnConnected(test spec.TestKind, fqdn string) error {
+func (j jsonEmitter) OnConnected(test spec.TestKind, fqdn string, loc spec.Location) error {
 	return j.emitInterface(batchEvent{
 		Key: "connected",
 		Value: batchValue{
 			Measurement: spec.Measurement{
-				Test: test,
+				Test:     test,
+				Location: &loc,
 			},
 			Server: fqdn,
 		},

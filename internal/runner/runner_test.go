@@ -41,7 +41,7 @@ func (mockedEmitter) OnError(test spec.TestKind, err error) error {
 	return nil
 }
 
-func (me mockedEmitter) OnConnected(test spec.TestKind, fqdn string) error {
+func (me mockedEmitter) OnConnected(test spec.TestKind, fqdn string, loc spec.Location) error {
 	return me.ConnectedError
 }
 

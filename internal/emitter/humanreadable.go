@@ -39,8 +39,8 @@ func (h HumanReadable) OnError(test spec.TestKind, err error) error {
 }
 
 // OnConnected handles the connected event
-func (h HumanReadable) OnConnected(test spec.TestKind, fqdn string) error {
-	_, err := fmt.Fprintf(h.out, "\r%s in progress with %s\n", test, fqdn)
+func (h HumanReadable) OnConnected(test spec.TestKind, fqdn string, loc spec.Location) error {
+	_, err := fmt.Fprintf(h.out, "\r%s in progress with %s from City %s Country %s \n", test, fqdn, loc.City, loc.Country)
 	return err
 }
 

@@ -45,7 +45,8 @@ func TestQuiet_OnConnected(t *testing.T) {
 	sw := &mocks.SavingWriter{}
 	e := jsonEmitter{sw}
 	quiet := Quiet{e}
-	err := quiet.OnConnected("download", "test")
+	l := spec.Location{City: "City", Country: "Country"}
+	err := quiet.OnConnected("download", "test", l)
 	if err != nil {
 		t.Fatal(err)
 	}

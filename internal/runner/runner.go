@@ -43,7 +43,7 @@ func (r Runner) doRunTest(
 		r.emitter.OnError(test, err)
 		return fmt.Errorf("Failed to start test %v: %v", test, err)
 	}
-	err = r.emitter.OnConnected(test, r.client.FQDN)
+	err = r.emitter.OnConnected(test, r.client.FQDN, r.client.Location)
 	if err != nil {
 		return fmt.Errorf("Failed to emit connection event for test %v: %v", test, err)
 	}
