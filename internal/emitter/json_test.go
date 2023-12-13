@@ -121,7 +121,8 @@ func TestJSONOnConnected(t *testing.T) {
 
 func TestJSONOnConnectedFailure(t *testing.T) {
 	j := NewJSON(&mocks.FailingWriter{})
-	err := j.OnConnected("download", "FQDN")
+	l := spec.Location{City: "City", Country: "Country"}
+	err := j.OnConnected("download", "FQDN", l)
 	if err != mocks.ErrMocked {
 		t.Fatal("Not the error we expected")
 	}

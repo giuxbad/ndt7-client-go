@@ -73,7 +73,8 @@ func TestHumanReadableOnConnected(t *testing.T) {
 
 func TestHumanReadableOnConnectedFailure(t *testing.T) {
 	hr := HumanReadable{&mocks.FailingWriter{}}
-	err := hr.OnConnected("download", "FQDN")
+	l := spec.Location{City: "City", Country: "Country"}
+	err := hr.OnConnected("download", "FQDN", l)
 	if err != mocks.ErrMocked {
 		t.Fatal("Not the error we expected")
 	}

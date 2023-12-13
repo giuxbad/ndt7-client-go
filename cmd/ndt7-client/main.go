@@ -2,7 +2,7 @@
 //
 // Usage:
 //
-//    ndt7-client [flags]
+//	ndt7-client [flags]
 //
 // The `-format` flag defines how the output should be emitter. Possible
 // values are "human", which is the default, and "json", where each message
@@ -51,13 +51,13 @@
 //
 // When the download test starts, this event is emitted:
 //
-//   {"Key":"starting","Value":{"Test":"download"}}
+//	{"Key":"starting","Value":{"Test":"download"}}
 //
 // After this event is emitted, we discover the server to use (unless it
 // has been configured by the user) and we connect to it. If any of these
 // operations fail, this event is emitted:
 //
-//   {"Key":"error","Value":{"Failure":"<failure>","Test":"download"}}
+//	{"Key":"error","Value":{"Failure":"<failure>","Test":"download"}}
 //
 // where `<failure>` is the error that occurred serialized as string. In
 // case of failure, the test is over and the next event to be emitted is
@@ -65,23 +65,23 @@
 //
 // Otherwise, the download test starts and we see the following event:
 //
-//   {"Key":"connected","Value":{"Server":"<server>","Test":"download"}}
+//	{"Key":"connected","Value":{"Server":"<server>","Test":"download"}}
 //
 // where `<server>` is the FQDN of the server we're using. Then there
 // are zero or more events like:
 //
-//   {"Key": "measurement","Value": <value>}
+//	{"Key": "measurement","Value": <value>}
 //
 // where `<value>` is a serialized spec.Measurement struct.
 //
 // Finally, this event is always emitted at the end of the test:
 //
-//   {"Key":"complete","Value":{"Test":"download"}}
+//	{"Key":"complete","Value":{"Test":"download"}}
 //
 // The upload test is like the download test, except for the
 // value of the `"Test"` key.
 //
-// Exit code
+// # Exit code
 //
 // This tool exits with zero on success, nonzero on failure. Under
 // some severe internal error conditions, this tool will exit using
@@ -113,8 +113,8 @@ const (
 )
 
 var (
-	ClientName    = "ndt7-client-go-cmd"
-	ClientVersion = "0.7.0"
+	ClientName    = "fing-mlab-ndt7"
+	ClientVersion = "1.0.0"
 	flagProfile   = flag.String("profile", "",
 		"file where to store pprof profile (see https://blog.golang.org/pprof)")
 
@@ -210,8 +210,8 @@ func main() {
 	r := runner.New(
 		runner.RunnerOptions{
 			Download: *flagDownload,
-			Upload: *flagUpload,
-			Timeout: *flagTimeout,
+			Upload:   *flagUpload,
+			Timeout:  *flagTimeout,
 			ClientFactory: func() *ndt7.Client {
 				c := ndt7.NewClient(ClientName, ClientVersion)
 				c.ServiceURL = flagService.URL
